@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            FirstFragment firstFragment = new FirstFragment();
-            fragmentTransaction.add(R.id.fragment_container, firstFragment, null);
+            HomeFragment homeFragment = new HomeFragment();
+            fragmentTransaction.add(R.id.fragment_container, homeFragment, null);
             fragmentTransaction.commit();
         }
     }
