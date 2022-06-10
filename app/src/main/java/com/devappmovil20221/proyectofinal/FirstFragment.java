@@ -26,9 +26,7 @@ public class FirstFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                MainActivity.contenidoActual = 1;
-                MainActivity.preguntaActual =9100;
-                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new SecondFragment(), null).commit();
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new Curso1FirstRunFragment(), null).commit();
             }
         });
         return view;

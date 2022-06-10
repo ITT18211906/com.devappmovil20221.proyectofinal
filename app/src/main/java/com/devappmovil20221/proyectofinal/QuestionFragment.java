@@ -7,58 +7,73 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QuestionFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class QuestionFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextView mNombreTextView;
+    private TextView mTextoTextView;
+    private TextView mPreguntaTextView;
+    private Button mres1button;
+    private Button mres2button;
+    private Button mres3button;
+    private Button mres4button;
 
     public QuestionFragment() {
-        // Required empty public constructor
-    }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QuestionFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QuestionFragment newInstance(String param1, String param2) {
-        QuestionFragment fragment = new QuestionFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question, container, false);
+        View view = inflater.inflate(R.layout.fragment_result, container, false);
+        mNombreTextView = view.findViewById(R.id.nombre_TextView);
+        mTextoTextView = view.findViewById(R.id.texto_TextView);
+        mPreguntaTextView = view.findViewById(R.id.pregunta_TextView);
+        mres1button = view.findViewById(R.id.res1);
+        mres2button = view.findViewById(R.id.res2);
+        mres3button = view.findViewById(R.id.res3);
+        mres4button = view.findViewById(R.id.res4);
+
+        ContenidoPregunta pregunta = new ContenidoPregunta();
+        DatabaseHelper db=new DatabaseHelper(getContext());
+
+        pregunta = db.getPregunta(MainActivity.preguntaActual);
+
+        mNombreTextView.setText(pregunta.getNombre());
+        mTextoTextView.setText(pregunta.getTexto());
+        mPreguntaTextView.setText(pregunta.getPregunta());
+        mres1button.setText(pregunta.getRes1());
+        mres2button.setText(pregunta.getRes2());
+        mres3button.setText(pregunta.getRes3());
+        mres4button.setText(pregunta.getRes4());
+        ContenidoPregunta finalPregunta = pregunta;
+        mres1button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.preguntaActual= finalPregunta.getRes1next();
+            }
+        });
+        mres2button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.preguntaActual=finalPregunta.getRes2next();
+            }
+        });
+        mres3button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.preguntaActual=finalPregunta.getRes3next();
+            }
+        });
+        mres4button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.preguntaActual=finalPregunta.getRes4next();
+            }
+        });
+        return view;
     }
 }

@@ -7,21 +7,21 @@
     tools:context=".SecondFragment">
 
     <TextView
-        android:id="@+id/resultHeader_TextView"
+        android:id="@+id/nombre_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/result"
         android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/result_TextView"
+        app:layout_constraintBottom_toTopOf="@+id/texto_TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/result_TextView"
+        android:id="@+id/texto_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text="@string/todo"
         android:textSize="64sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,12 +29,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/res1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_TextView" />
+        app:layout_constraintTop_toBottomOf="@+id/texto_TextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

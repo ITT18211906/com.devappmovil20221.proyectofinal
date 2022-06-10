@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
     public static FragmentManager fragmentManager;
-    public static int contenidoActual;
     public static int preguntaActual;
 
     @Override

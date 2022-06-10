@@ -25,8 +25,8 @@ public class ResultFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_result, container, false);
-        mResultTextView = view.findViewById(R.id.result_TextView);
-        mExitButton = view.findViewById(R.id.button);
+        mResultTextView = view.findViewById(R.id.texto_TextView);
+        mExitButton = view.findViewById(R.id.res1);
         mResultTextView.setText(String.valueOf(MainActivity.preguntaActual - 9000));
         mExitButton.setOnClickListener(new View.OnClickListener() {
             @Override
