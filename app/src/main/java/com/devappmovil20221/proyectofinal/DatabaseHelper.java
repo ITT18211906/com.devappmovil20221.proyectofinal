@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_ANS1="ans1";
     private static final String KEY_ANS1NEXT="ans1next";
     private static final String KEY_ANS2="ans2";
-    private static final String KEY_ANS2NEXT="ans3next";
+    private static final String KEY_ANS2NEXT="ans2next";
     private static final String KEY_ANS3="ans3";
     private static final String KEY_ANS3NEXT="ans3next";
     private static final String KEY_ANS4="ans4";
@@ -30,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        createDB(db);
+        manualRenewDB(db);
     }
 
     @Override
@@ -54,7 +54,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(KEY_ANS4, pregunta.getRes4());
         values.put(KEY_ANS4NEXT, pregunta.getRes4next());
         db.insert(TABLE_NAME, null, values);
-        db.close();
+    }
+
+    public void addPregunta(int id, String nombre, String texto, String pregunta, String res1, int res1Next, String res2, int res2next, String res3, int res3next, String res4, int res4next){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put(KEY_ID, id);
+        values.put(KEY_NAME, nombre);
+        values.put(KEY_TEXT, texto);
+        values.put(KEY_QUESTION, pregunta);
+        values.put(KEY_ANS1, res1);
+        values.put(KEY_ANS1NEXT, res1Next);
+        values.put(KEY_ANS2, res2);
+        values.put(KEY_ANS2NEXT, res2next);
+        values.put(KEY_ANS3, res3);
+        values.put(KEY_ANS3NEXT, res3next);
+        values.put(KEY_ANS4, res4);
+        values.put(KEY_ANS4NEXT, res4next);
+        db.insert(TABLE_NAME, null, values);
     }
 
     public ContenidoPregunta getPregunta(int id){
@@ -78,14 +95,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 pregunta.setRes4next(Integer.parseInt(cursor.getString(11)));
             } while (cursor.moveToNext());
         }
-        db.close();
         return pregunta;
     }
 
     public void deletePregunta(ContenidoPregunta question){
         SQLiteDatabase db=this.getWritableDatabase();
         db.delete(TABLE_NAME, KEY_ID+"=?", new String[]{String.valueOf(question.getId())});
-        db.close();
     }
 
     public int getCount(){
@@ -93,12 +108,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery(countQuery, null);
         int count=cursor.getCount();
-        db.close();
         return count;
     }
 
     public void manualRenewDB(){
         SQLiteDatabase db=this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
+        createDB(db);
+    }
+
+    public void manualRenewDB(SQLiteDatabase db){
+        if(db == null){
+            db=this.getWritableDatabase();
+        }
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
         createDB(db);
     }
@@ -119,6 +141,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + KEY_ANS4 + " TEXT,"
                 + KEY_ANS4NEXT + " INT)";
         db.execSQL(CREATE_TABLE);
-        db.close();
     }
 }
