@@ -5,14 +5,10 @@
     <string name="demo">DEMO</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="cursos">Cursos:</string>
+    <string name="cursos">Cursos: </string>
     <string name="curso_1">Curso 1</string>
     <string name="curso_2">Curso 2</string>
-    <string name="curso_4">Curso 4</string>
     <string name="curso_3">Curso 3</string>
+    <string name="curso_4">Curso 4</string>
     <string name="todo">TODO</string>
-    <string name="curso3">Curso3</string>
-    <string name="curso4">Curso4</string>
-    <string name="curso1">Curso1</string>
-    <string name="curso2">Curso2</string>
 </resources>
