@@ -8,8 +8,8 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
     public static FragmentManager fragmentManager;
-    public int contenidoActual;
-    public int preguntaActual;
+    public static int contenidoActual;
+    public static int preguntaActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
