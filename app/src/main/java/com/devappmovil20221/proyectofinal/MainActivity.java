@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         fragmentManager = getSupportFragmentManager();
         if (findViewById(R.id.fragment_container) != null){
-            // Sobrepone los fragmentos en caso de que no
             if (savedInstanceState != null){
                 return;
             }
