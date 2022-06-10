@@ -23,9 +23,10 @@ public class FirstFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
         mimagebutton_curso1 = view.findViewById(R.id.imagebutton_curso1);
         mimagebutton_curso1.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new SecondFragment(), null).addToBackStack(null).commit();
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new SecondFragment(), null).commit();
             }
         });
         return view;

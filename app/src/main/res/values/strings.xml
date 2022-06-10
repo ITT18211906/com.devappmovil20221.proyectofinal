@@ -2,13 +2,11 @@
     <string name="app_name">The Ultimate Education</string>
     <string name="comenzar">COMENZAR</string>
     <string name="the_ultimate_education">The Ultimate Education</string>
-    <string name="demo">DEMO</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="demo">Demostración v0.1</string>
     <string name="cursos">Cursos: </string>
     <string name="curso_1">Curso 1</string>
-    <string name="curso_2">Curso 2</string>
-    <string name="curso_3">Curso 3</string>
-    <string name="curso_4">Curso 4</string>
+    <string name="curso_2">Curso 2 (proximamente)</string>
+    <string name="curso_3">Curso 3 (proximamente)</string>
+    <string name="curso_4">Curso 4 (proximamente)</string>
     <string name="todo">TODO</string>
 </resources>

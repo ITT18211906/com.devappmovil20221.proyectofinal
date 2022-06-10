@@ -7,8 +7,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-    // Llamamos al administrador de fragmentos
     public static FragmentManager fragmentManager;
+    public int contenidoActual;
+    public int preguntaActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
