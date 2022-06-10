@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class QuestionFragment extends Fragment {
 
@@ -61,29 +62,34 @@ public class QuestionFragment extends Fragment {
         mres2TV.setText(pregunta.getRes2());
         mres3TV.setText(pregunta.getRes3());
         mres4TV.setText(pregunta.getRes4());
+        int res1next = pregunta.getRes1next();
         ContenidoPregunta finalPregunta = pregunta;
         mres1button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.preguntaActual= finalPregunta.getRes1next();
+                MainActivity.preguntaActual=res1next;
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new SecondFragment(), null).commit();
             }
         });
         mres2button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MainActivity.preguntaActual=finalPregunta.getRes2next();
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new SecondFragment(), null).commit();
             }
         });
         mres3button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MainActivity.preguntaActual=finalPregunta.getRes3next();
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new SecondFragment(), null).commit();
             }
         });
         mres4button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MainActivity.preguntaActual=finalPregunta.getRes4next();
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new SecondFragment(), null).commit();
             }
         });
     }
